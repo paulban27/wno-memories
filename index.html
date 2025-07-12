@@ -27,9 +27,13 @@
       max-width: 90vw;
       opacity: 0;
       animation: fadeIn 1.5s ease-out forwards;
-      color: #aa0000;
       padding: 0 5vw;
       line-height: 1.4em;
+    }
+
+    .highlight {
+      color: #aa0000;
+      font-weight: bold;
     }
 
     #footer {
@@ -41,14 +45,6 @@
       font-style: italic;
     }
 
-    #logo {
-      position: absolute;
-      bottom: 8px;
-      left: 12px;
-      width: 100px;
-      opacity: 0.8;
-    }
-
     @keyframes fadeIn {
       to { opacity: 1; }
     }
@@ -56,8 +52,7 @@
 </head>
 <body>
   <h1 id="message">...</h1>
-  <img id="logo" src="wno-logo.png" alt="wno memories logo">
-  <div id="footer">wegorzyno remembers</div>
+  <div id="footer">wegorzyno remembers – <span id="date">...</span></div>
 
   <script>
     function updateCounter() {
@@ -71,8 +66,13 @@
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
-      const message = `to już ${days} dzień, ${hours} godzin, ${minutes} minut i ${seconds} sekund\nw którym za sprzedaż gildii nikt nie poniósł konsekwencji`;
-      document.getElementById("message").textContent = message;
+      const message = `to już <span class="highlight">${days} dzień, ${hours} godzin, ${minutes} minut i ${seconds} sekund</span>\nw którym za sprzedaż gildii nikt nie poniósł konsekwencji`;
+      document.getElementById("message").innerHTML = message;
+
+      // aktualna data
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      const formattedDate = now.toLocaleDateString('pl-PL', options);
+      document.getElementById("date").textContent = formattedDate;
     }
 
     updateCounter();
