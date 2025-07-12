@@ -2,41 +2,61 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Dni bez konsekwencji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wno-memories</title>
   <style>
     body {
-      background-color: #000;
-      color: #f0f0f0;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       height: 100vh;
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 1.6rem;
       font-weight: normal;
-      margin-top: 25vh; /* trochę wyżej niż środek */
+      margin-top: 18vh;
       text-align: center;
-      max-width: 90%;
+      max-width: 90vw;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      color: #aa0000;
+      padding: 0 5vw;
+      line-height: 1.4em;
     }
 
     #footer {
       position: absolute;
-      bottom: 10px;
-      right: 20px;
-      font-size: 0.9em;
+      bottom: 8px;
+      right: 12px;
+      font-size: 0.8rem;
       color: #888;
       font-style: italic;
+    }
+
+    #logo {
+      position: absolute;
+      bottom: 8px;
+      left: 12px;
+      width: 100px;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <h1 id="message">...</h1>
+  <img id="logo" src="wno-logo.png" alt="wno memories logo">
   <div id="footer">wegorzyno remembers</div>
 
   <script>
@@ -51,12 +71,12 @@
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
-      const message = `To już ${days} dzień, ${hours} godzin, ${minutes} minut i ${seconds} sekund w którym za sprzedaż gildii nikt nie poniósł konsekwencji`;
+      const message = `to już ${days} dzień, ${hours} godzin, ${minutes} minut i ${seconds} sekund\nw którym za sprzedaż gildii nikt nie poniósł konsekwencji`;
       document.getElementById("message").textContent = message;
     }
 
-    updateCounter(); // pierwszy raz
-    setInterval(updateCounter, 1000); // aktualizacja co sekundę
+    updateCounter();
+    setInterval(updateCounter, 1000);
   </script>
 </body>
 </html>
