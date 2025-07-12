@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Ile dni minęło?</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Od 1 stycznia 2015 minęło:</h1>
+  <p id="result">...</p>
+
+  <script>
+    const startDate = new Date("2015-01-01");
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("result").textContent = diffDays + " dni";
+  </script>
+</body>
+</html>
